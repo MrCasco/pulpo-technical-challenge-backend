@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from functions.main import _get_sudan_donatives
+from functions.main import _get_donatives
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -24,7 +24,7 @@ def read_root():
     return "Hello World"
 
 
-@app.get("/sudan_donatives")
-async def get_sudan_donatives():
-    """Login"""
-    return _get_sudan_donatives()
+@app.get("/donatives_by_country_code")
+async def get_donatives(start_date: int, country_code: str):
+    """Donatives"""
+    return _get_donatives(start_date, country_code)
